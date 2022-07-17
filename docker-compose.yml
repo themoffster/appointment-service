@@ -1,0 +1,11 @@
+version: '3'
+
+services:
+  appointment-service:
+    build: .
+    container_name: appointment-service
+    network_mode: host
+    ports:
+      - 8083:8083
+    volumes:
+      - ./build/libs:/tmp/src

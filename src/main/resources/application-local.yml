@@ -1,0 +1,29 @@
+---
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/practice
+    username: appointment_service_rw
+    password: appointment_service_rw
+  flyway:
+    baseline-on-migrate: true
+    user: appointment_service_admin
+    password: appointment_service_admin
+
+# Profile for debugging hibernate
+---
+spring.config.activate.on-profile: local-patient-service
+
+services:
+  patient-service:
+    base-url: http://localhost:8082
+
+# Profile for debugging hibernate
+---
+spring.config.activate.on-profile: debug-hibernate
+
+logging:
+  level:
+    org.hibernate.SQL: debug
+    org.hibernate.cache: debug
+    org.hibernate.search: debug
+    org.hibernate.type.descriptor.sql.BasicBinder: trace

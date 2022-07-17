@@ -1,0 +1,8 @@
+---
+zonky:
+  test:
+    database:
+      postgres:
+        server:
+          properties:
+            features.show_migrated: true

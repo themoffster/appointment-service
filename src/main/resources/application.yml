@@ -1,0 +1,51 @@
+---
+info:
+  app:
+    title: Appointment Service
+    description: Service for storing and maintaining appointment records.
+
+logging:
+  level:
+    uk.com.poodle: DEBUG
+
+server:
+  port: 8083
+
+service:
+  mail:
+    from: poodle@harhay.co.uk
+  scheduler:
+    appointment-reminder:
+      cron: 0 0 8 * * *
+
+services:
+  patient-service:
+    base-url: TODO
+    connect-timeout: 1s
+    read-timeout: 2s
+
+spring:
+  application:
+    name: appointment-service
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    hikari:
+      connection-test-query: select 1
+      maximum-pool-size: 10
+      minimum-idle: 1
+    url: jdbc:postgresql://TODO
+    username: TODO
+    password: TODO
+  flyway:
+    baseline-on-migrate: false
+    enabled: true
+    url: ${spring.datasource.url}
+    user: TODO
+    password: TODO
+  jackson:
+    default-property-inclusion: NON_NULL
+  jpa:
+    open-in-view: false
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQL9Dialect

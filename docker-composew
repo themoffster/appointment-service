@@ -1,0 +1,9 @@
+#!/bin/bash -ex
+
+set -a
+
+./gradlew clean build
+
+set +a
+
+docker-compose $@
